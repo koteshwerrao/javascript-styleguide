@@ -1,7 +1,15 @@
-# Airbnb JavaScript Style Guide() {
+# Grasshopper JavaScript Style Guide() {
 
-*A mostly reasonable approach to JavaScript*
+*A mostly reasonable approach to JavaScript adapted from Airbnb*
 
+## TL;DR
+  * Readability and understandability are the goals
+  * Whitespace is king
+  * Variables & functions are camelCased
+  * Always use 4 space indents
+  * 4 line returns between functions
+  * Line return above comment
+  * Line returns at top and bottom of functions and objects
 
 ## <a name='TOC'>Table of Contents</a>
 
