@@ -87,16 +87,20 @@
     ```javascript
     // bad
     var superman = {
+
       class: 'superhero',
       default: { clark: 'kent' },
       private: true
+
     };
 
     // good
     var superman = {
+
       klass: 'superhero',
       defaults: { clark: 'kent' },
       hidden: true
+
     };
     ```
     **[[⬆]](#TOC)**
@@ -135,7 +139,9 @@
 
     // bad
     for (i = 0; i < len; i++) {
+
       itemsCopy[i] = items[i];
+
     }
 
     // good
@@ -196,38 +202,56 @@
         length, i;
 
     messages = [{
+
         state: 'success',
         message: 'This one worked.'
-    },{
+
+    },
+
+    {
+
         state: 'success',
         message: 'This one worked as well.'
-    },{
+
+    },
+
+    {
+
         state: 'error',
         message: 'This one did not work.'
+
     }];
 
     length = messages.length;
 
     // bad
-    function inbox(messages) {
+    function inbox (messages) {
+
       items = '<ul>';
 
       for (i = 0; i < length; i++) {
+
         items += '<li>' + messages[i].message + '</li>';
+
       }
 
       return items + '</ul>';
+
     }
 
     // good
-    function inbox(messages) {
+    function inbox (messages) {
+
       items = [];
 
       for (i = 0; i < length; i++) {
+
         items[i] = messages[i].message;
+
       }
 
       return '<ul><li>' + items.join('</li><li>') + '</li></ul>';
+
     }
     ```
 
@@ -241,17 +265,23 @@
     ```javascript
     // anonymous function expression
     var anonymous = function() {
+
       return true;
+
     };
 
     // named function expression
-    var named = function named() {
+    var named = function named () {
+
       return true;
+
     };
 
     // immediately-invoked function expression (IIFE)
     (function() {
+
       console.log('Welcome to the Internet. Please follow me.');
+
     })();
     ```
 
@@ -261,16 +291,23 @@
     ```javascript
     // bad
     if (currentUser) {
-      function test() {
+
+      function test () {
+
         console.log('Nope.');
+
       }
     }
 
     // good
     if (currentUser) {
-      var test = function test() {
+
+      var test = function test () {
+
         console.log('Yup.');
+
       };
+
     }
     ```
 
@@ -278,13 +315,17 @@
 
     ```javascript
     // bad
-    function nope(name, options, arguments) {
+    function nope (name, options, arguments) {
+
       // ...stuff...
+
     }
 
     // good
     function yup(name, options, args) {
+
       // ...stuff...
+
     }
     ```
 
@@ -298,8 +339,10 @@
 
     ```javascript
     var luke = {
+
       jedi: true,
       age: 28
+
     };
 
     // bad
@@ -313,12 +356,16 @@
 
     ```javascript
     var luke = {
+
       jedi: true,
       age: 28
+
     };
 
     function getProp(prop) {
+
       return luke[prop];
+
     }
 
     var isJedi = getProp('jedi');
@@ -380,6 +427,7 @@
     ```javascript
     // bad
     function() {
+
       test();
       console.log('doing stuff..');
 
@@ -388,48 +436,63 @@
       var name = getName();
 
       if (name === 'test') {
+
         return false;
+
       }
 
       return name;
+
     }
 
     // good
     function() {
+
       var name = getName();
 
       test();
+
       console.log('doing stuff..');
 
       //..other stuff..
 
       if (name === 'test') {
+
         return false;
+
       }
 
       return name;
+
     }
 
     // bad
     function() {
+
       var name = getName();
 
       if (!arguments.length) {
+
         return false;
+
       }
 
       return true;
+
     }
 
     // good
     function() {
       if (!arguments.length) {
+
         return false;
+
       }
 
       var name = getName();
 
       return true;
+
     }
     ```
 
@@ -443,47 +506,58 @@
     ```javascript
     // we know this wouldn't work (assuming there
     // is no notDefined global variable)
-    function example() {
+    function example () {
+
       console.log(notDefined); // => throws a ReferenceError
+
     }
 
     // creating a variable declaration after you
     // reference the variable will work due to
     // variable hoisting. Note: the assignment
     // value of `true` is not hoisted.
-    function example() {
+    function example () {
+
       console.log(declaredButNotAssigned); // => undefined
       var declaredButNotAssigned = true;
+
     }
 
     // The interpreter is hoisting the variable
     // declaration to the top of the scope.
     // Which means our example could be rewritten as:
-    function example() {
+    function example () {
+
       var declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
       declaredButNotAssigned = true;
+
     }
     ```
 
   - Anonymous function expressions hoist their variable name, but not the function assignment.
 
     ```javascript
-    function example() {
+    function example () {
+
       console.log(anonymous); // => undefined
 
       anonymous(); // => TypeError anonymous is not a function
 
       var anonymous = function() {
+
         console.log('anonymous function expression');
+
       };
+
     }
     ```
 
   - Named function expressions hoist the variable name, not the function name or the function body.
 
     ```javascript
-    function example() {
+    function example () {
+
       console.log(named); // => undefined
 
       named(); // => TypeError named is not a function
@@ -491,33 +565,44 @@
       superPower(); // => ReferenceError superPower is not defined
 
       var named = function superPower() {
+
         console.log('Flying');
+
       };
 
 
       // the same is true when the function name
       // is the same as the variable name.
-      function example() {
+      function example () {
+
         console.log(named); // => undefined
 
         named(); // => TypeError named is not a function
 
         var named = function named() {
+
           console.log('named');
+
         };
+
       }
+
     }
     ```
 
   - Function declarations hoist their name and the function body.
 
     ```javascript
-    function example() {
+    function example () {
+
       superPower(); // => Flying
 
-      function superPower() {
+      function superPower () {
+
         console.log('Flying');
+
       }
+
     }
     ```
 
@@ -615,11 +700,12 @@
     //
     // @param <String> tag
     // @return <Element> element
-    function make(tag) {
+    function make (tag) {
 
       // ...stuff...
 
       return element;
+
     }
 
     // good
@@ -630,15 +716,17 @@
      * @param <String> tag
      * @return <Element> element
      */
-    function make(tag) {
+    function make (tag) {
 
       // ...stuff...
 
       return element;
+
     }
     ```
 
   - Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an emptyline before the comment.
+  - There should always be a line return before each comment to create visual separation from the previous line.
 
     ```javascript
     // bad
@@ -655,6 +743,7 @@
       var type = this._type || 'no type';
 
       return type;
+
     }
 
     // good
@@ -665,6 +754,7 @@
       var type = this._type || 'no type';
 
       return type;
+
     }
     ```
 
@@ -673,95 +763,69 @@
 
 ## <a name='whitespace'>Whitespace</a>
 
-  - Use soft tabs set to 2 spaces
+  - Use soft tabs set to 4 spaces
 
     ```javascript
     // bad
     function() {
-    ∙∙∙∙var name;
+
+    ∙var name;
+
     }
 
     // bad
     function() {
-    ∙var name;
+
+    ∙∙var name;
+
     }
 
     // good
     function() {
-    ∙∙var name;
+
+    ∙∙∙∙var name;
+
     }
     ```
-  - Place 1 space before the leading brace.
+  - Place 1 space before the argument parentheses and before the leading brace.
 
     ```javascript
     // bad
     function test(){
+
       console.log('test');
+
+    }
+
+    // bad
+    function test() {
+
+      console.log('test');
+
     }
 
     // good
-    function test() {
+    function test () {
+
       console.log('test');
+
     }
 
     // bad
     dog.set('attr',{
+
       age: '1 year',
       breed: 'Bernese Mountain Dog'
+
     });
 
     // good
     dog.set('attr', {
+
       age: '1 year',
       breed: 'Bernese Mountain Dog'
+
     });
-    ```
-  - Place an empty newline at the end of the file.
-
-    ```javascript
-    // bad
-    (function(global) {
-      // ...stuff...
-    })(this);
-    ```
-
-    ```javascript
-    // good
-    (function(global) {
-      // ...stuff...
-    })(this);
-
-    ```
-
-  - Use indentation when making long method chains.
-
-    ```javascript
-    // bad
-    $('#items').find('.selected').highlight().end().find('.open').updateCount();
-
-    // good
-    $('#items')
-      .find('.selected')
-        .highlight()
-        .end()
-      .find('.open')
-        .updateCount();
-
-    // bad
-    var leds = stage.selectAll('.led').data(data).enter().append("svg:svg").class('led', true)
-        .attr('width',  (radius + margin) * 2).append("svg:g")
-        .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
-        .call(tron.led);
-
-    // good
-    var leds = stage.selectAll('.led')
-        .data(data)
-      .enter().append("svg:svg")
-        .class('led', true)
-        .attr('width',  (radius + margin) * 2)
-      .append("svg:g")
-        .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
-        .call(tron.led);
     ```
 
     **[[⬆]](#TOC)**
@@ -783,18 +847,22 @@
 
     // bad
     var hero = {
+
         firstName: 'Bob'
       , lastName: 'Parr'
       , heroName: 'Mr. Incredible'
       , superPower: 'strength'
+
     };
 
     // good
     var hero = {
+
       firstName: 'Bob',
       lastName: 'Parr',
       heroName: 'Mr. Incredible',
       superPower: 'strength'
+
     };
     ```
 
@@ -808,20 +876,26 @@
     ```javascript
     // bad
     (function() {
+
       var name = 'Skywalker'
       return name
+
     })()
 
     // good
     (function() {
+
       var name = 'Skywalker';
       return name;
+
     })();
 
     // good
     ;(function() {
+
       var name = 'Skywalker';
       return name;
+
     })();
     ```
 
@@ -906,12 +980,12 @@
 
     ```javascript
     // bad
-    function q() {
+    function q () {
       // ...stuff...
     }
 
     // good
-    function query() {
+    function query () {
       // ..stuff..
     }
     ```
@@ -923,19 +997,24 @@
     var OBJEcttsssss = {};
     var this_is_my_object = {};
     var this-is-my-object = {};
-    function c() {};
+    function c () {};
     var u = new user({
+
       name: 'Bob Parr'
+
     });
 
     // good
     var thisIsMyObject = {};
-    function thisIsMyFunction() {};
+    function thisIsMyFunction () {};
     var user = new User({
+
       name: 'Bob Parr'
+
     });
     ```
 
+  - First, have a really good reason to use Constructors and Classes
   - Use PascalCase when naming constructors or classes
 
     ```javascript
@@ -974,26 +1053,41 @@
     ```javascript
     // bad
     function() {
+
       var self = this;
+
       return function() {
+
         console.log(self);
+
       };
+
     }
 
     // bad
     function() {
+
       var that = this;
+
       return function() {
+
         console.log(that);
+
       };
+
     }
 
     // good
     function() {
+
       var _this = this;
+
       return function() {
+
         console.log(_this);
+
       };
+
     }
     ```
 
@@ -1001,13 +1095,17 @@
 
     ```javascript
     // bad
-    var log = function(msg) {
+    var log = function (msg) {
+
       console.log(msg);
+
     };
 
     // good
-    var log = function log(msg) {
+    var log = function log (msg) {
+
       console.log(msg);
+
     };
     ```
 
@@ -1038,12 +1136,16 @@
     ```javascript
     // bad
     if (!dragon.age()) {
+
       return false;
+
     }
 
     // good
     if (!dragon.hasAge()) {
+
       return false;
+
     }
     ```
 
@@ -1051,17 +1153,23 @@
 
     ```javascript
     function Jedi(options) {
+
       options || (options = {});
       var lightsaber = options.lightsaber || 'blue';
       this.set('lightsaber', lightsaber);
+
     }
 
     Jedi.prototype.set = function(key, val) {
+
       this[key] = val;
+
     };
 
     Jedi.prototype.get = function(key) {
+
       return this[key];
+
     };
     ```
 
@@ -1070,31 +1178,43 @@
 
 ## <a name='constructors'>Constructors</a>
 
+  - First, have a REALLY good reason for using a Constructor (be able to defend why it's the best option)
   - Assign methods to the prototype object, instead of overwriting the prototype with a new object. Overwriting the prototype makes inheritance impossible: by resetting the prototype you'll overwrite the base!
 
     ```javascript
     function Jedi() {
+
       console.log('new jedi');
+
     }
 
     // bad
     Jedi.prototype = {
+
       fight: function fight() {
+
         console.log('fighting');
+
       },
 
       block: function block() {
+
         console.log('blocking');
+
       }
     };
 
     // good
     Jedi.prototype.fight = function fight() {
+
       console.log('fighting');
+
     };
 
     Jedi.prototype.block = function block() {
+
       console.log('blocking');
+
     };
     ```
 
@@ -1103,12 +1223,16 @@
     ```javascript
     // bad
     Jedi.prototype.jump = function() {
+
       this.jumping = true;
       return true;
+
     };
 
     Jedi.prototype.setHeight = function(height) {
+
       this.height = height;
+
     };
 
     var luke = new Jedi();
@@ -1117,13 +1241,17 @@
 
     // good
     Jedi.prototype.jump = function() {
+
       this.jumping = true;
       return this;
+
     };
 
     Jedi.prototype.setHeight = function(height) {
+
       this.height = height;
       return this;
+
     };
 
     var luke = new Jedi();
@@ -1137,16 +1265,22 @@
 
     ```javascript
     function Jedi(options) {
+
       options || (options = {});
       this.name = options.name || 'no name';
+
     }
 
     Jedi.prototype.getName = function getName() {
+
       return this.name;
+
     };
 
     Jedi.prototype.toString = function toString() {
+
       return 'Jedi - ' + this.getName();
+
     };
     ```
 
@@ -1200,26 +1334,34 @@
 
     ```javascript
     // bad
-    function setSidebar() {
+    function setSidebar () {
+
       $('.sidebar').hide();
 
       // ...stuff...
 
       $('.sidebar').css({
+
         'background-color': 'pink'
+
       });
     }
 
     // good
-    function setSidebar() {
+    function setSidebar () {
+
       var $sidebar = $('.sidebar');
+
       $sidebar.hide();
 
       // ...stuff...
 
       $sidebar.css({
+
         'background-color': 'pink'
+
       });
+
     }
     ```
 
@@ -1262,7 +1404,9 @@
 
     ```javascript
     function() {
+
       return true;
+
     }
     ```
 
