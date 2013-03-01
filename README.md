@@ -9,6 +9,7 @@
   1. [Objects](#objects)
   1. [Arrays](#arrays)
   1. [Strings](#strings)
+  1. [Embedded HTML](#embedded-html)
   1. [Functions](#functions)
   1. [Properties](#properties)
   1. [Variables](#variables)
@@ -256,6 +257,30 @@
     ```
 
     **[[⬆]](#TOC)**
+
+
+## <a name='embedded-html'>Embedded HTML</a>
+  - Always use single quotes for javascript and double quotes for HTML attributes
+
+  ```javascript
+
+  // Bad (no mixing in JS expressions)
+  $(".selector").on('click', function(){
+
+      // do stuff
+
+  });
+
+  // Bad (using single quotes in HTML attributes is sloppy and not best practice)
+  $("ul").append("<li class='myclass'>information</li>");
+
+  // Right, but not very readable
+  $("ul").append("<li class=\"myclass\">information</li>");
+
+  // Good - best option
+  $('ul').append('<li class="myclass">information</li>');
+
+  ```
 
 
 ## <a name='functions'>Functions</a>
