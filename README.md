@@ -77,7 +77,7 @@
     console.log(foo[0], bar[0]); // => 9, 9
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 ## <a name='objects'>Objects</a>
 
@@ -112,7 +112,7 @@
 
     };
     ```
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 ## <a name='arrays'>Arrays</a>
 
@@ -157,7 +157,7 @@
     itemsCopy = Array.prototype.slice.call(items);
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='strings'>Strings</a>
@@ -264,7 +264,7 @@
     }
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='embedded-html'>Embedded HTML</a>
@@ -342,6 +342,19 @@
       };
 
     }
+    
+    // better
+    var test = function test () {
+        
+        console.log("Yup.");
+        
+    }
+    
+    if (currentUser) {
+        
+        test();
+        
+    }
     ```
 
   - Never name a parameter `arguments`, this will take precedence over the `arguments` object that is given to every function scope.
@@ -355,14 +368,14 @@
     }
 
     // good
-    function yup(name, options, args) {
+    function yup (name, options, args) {
 
       // ...stuff...
 
     }
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 
@@ -404,7 +417,7 @@
     var isJedi = getProp('jedi');
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='variables'>Variables</a>
@@ -516,6 +529,7 @@
 
     // good
     function() {
+        
       if (!arguments.length) {
 
         return false;
@@ -529,7 +543,7 @@
     }
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='hoisting'>Hoisting</a>
@@ -641,7 +655,7 @@
 
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 
@@ -715,41 +729,46 @@
     ```
 
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='blocks'>Blocks</a>
 
   - Use braces with all multi-line blocks.
+  - Do not use single line blocks
 
     ```javascript
     // bad
     if (test)
       return false;
 
-    // good
+    // bad (no single line code with no curlies)
     if (test) return false;
 
     // good
     if (test) {
+        
       return false;
+      
     }
-
-    // bad
-    function() { return false; }
 
     // good
     function() {
+        
       return false;
+      
     }
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='comments'>Comments</a>
 
-  - Use `/** ... */` for multiline comments. Include a description, specify types and values for all parameters and return values.
+  - Use `/** ... */` for multiline comments.
+  - Use words that people can understand.
+  - Don't state the obvious
+  - Comments go above (not next to) the block they describe
 
     ```javascript
     // bad
@@ -766,18 +785,25 @@
 
     }
 
+    // bad (no comments to the side; don't state the obvious)
+    function () {
+        
+        if (stuff) { //this tests for "stuff"
+            
+            return true;
+            
+        }
+        
+    }
+
     // good
     /**
      * make() returns a new element
      * based on the passed in tag name
-     *
-     * @param <String> tag
-     * @return <Element> element
      */
     function make (tag) {
 
       // ...stuff...
-
       return element;
 
     }
@@ -816,7 +842,7 @@
     }
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='whitespace'>Whitespace</a>
@@ -886,7 +912,7 @@
     });
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 ## <a name='leading-commas'>Leading Commas</a>
 
@@ -924,7 +950,7 @@
     };
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='semicolons'>Semicolons</a>
@@ -957,7 +983,7 @@
     })();
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='type-coercion'>Type Casting & Coercion</a>
@@ -1029,7 +1055,7 @@
     var hasAge = !!age;
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='naming-conventions'>Naming Conventions</a>
@@ -1167,7 +1193,7 @@
     };
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='accessors'>Accessors</a>
@@ -1231,7 +1257,7 @@
     };
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='constructors'>Constructors</a>
@@ -1342,7 +1368,7 @@
     };
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='modules'>Modules</a>
@@ -1373,7 +1399,7 @@
     }(this);
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='jquery'>jQuery</a>
@@ -1446,14 +1472,14 @@
     $($sidebar[0]).find('ul');
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='es5'>ECMAScript 5 Compatibility</a>
 
   - Refer to [Kangax](https://twitter.com/kangax/)'s ES5 [compatibility table](http://kangax.github.com/es5-compat-table/)
 
-  **[[⬆]](#TOC)**
+  **[[↑]](#TOC)**
 
 
 ## <a name='testing'>Testing</a>
@@ -1468,7 +1494,7 @@
     }
     ```
 
-    **[[⬆]](#TOC)**
+    **[[↑]](#TOC)**
 
 
 ## <a name='performance'>Performance</a>
@@ -1482,7 +1508,7 @@
   - [Long String Concatenation](http://jsperf.com/ya-string-concat)
   - Loading...
 
-  **[[⬆]](#TOC)**
+  **[[↑]](#TOC)**
 
 
 ## <a name='resources'>Resources</a>
@@ -1528,7 +1554,7 @@
   - [Dustin Diaz](http://dustindiaz.com/)
   - [nettuts](http://net.tutsplus.com/?s=javascript)
 
-  **[[⬆]](#TOC)**
+  **[[↑]](#TOC)**
 
 ## <a name='in-the-wild'>In the Wild</a>
 
@@ -1561,7 +1587,7 @@
   - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
 
 
-**[[⬆]](#TOC)**
+**[[↑]](#TOC)**
 
 # };
 
