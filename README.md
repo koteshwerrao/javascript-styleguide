@@ -975,6 +975,12 @@
     })();
 
     // good
+    /**
+    * Adding a semicolon to the beginning of a function
+    * escapes poorly written JS before the function it precedes.
+    * This technique is most useful in 3rd party JS and shouldn't
+    * be considered standard practice.
+    */
     ;(function() {
 
       var name = 'Skywalker';
