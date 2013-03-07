@@ -1003,8 +1003,11 @@
     // bad
     var totalScore = this.reviewScore + '';
 
-    // good
+    // bad
     var totalScore = '' + this.reviewScore;
+    
+    // good
+    var totalScore = this.reviewScore.toString();
 
     // bad
     var totalScore = '' + this.reviewScore + ' total score';
@@ -1044,21 +1047,6 @@
      * Number made it a lot faster.
      */
     var val = inputValue >> 0;
-    ```
-
-  - Booleans:
-
-    ```javascript
-    var age = 0;
-
-    // bad
-    var hasAge = new Boolean(age);
-
-    // good
-    var hasAge = Boolean(age);
-
-    // good
-    var hasAge = !!age;
     ```
 
     **[[↑]](#TOC)**
