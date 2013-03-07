@@ -1428,7 +1428,8 @@
     // good
     function setSidebar () {
 
-      var $sidebar = $('.sidebar');
+      var $sidebar = $('.sidebar'),
+          $this = this;
 
       $sidebar.hide();
 
